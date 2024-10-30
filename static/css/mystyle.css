@@ -1,0 +1,36 @@
+.col-2{
+    width: 300px;
+    margin: 50px auto;
+    background-color: rgba(0, 0, 0, 0.795);
+    color: aliceblue;
+
+  }
+
+  .sidebar{
+    float: left;
+    background-color:black;
+    color: white
+  }
+
+  .btn{
+    background-color: plum;
+    color: white;
+  }
+
+  .footer {
+  
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(15, 14, 15, 0.932);
+    color: white;
+    text-align: center;
+    height:30px;
+ }
+
+  
+
+
+
+
+
