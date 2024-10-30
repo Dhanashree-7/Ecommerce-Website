@@ -1,0 +1,61 @@
+{% extends 'login1.html' %}
+{% load static %}
+
+{% block 'main' %}
+<style>
+   .container{
+      height:auto;
+      width: 100%;
+      padding:20px;
+
+
+   }
+
+   .col{
+      float: left;
+      btn:plum;
+   }
+
+   .btn{
+      background-color:plum;
+      color: black;
+   }
+
+   .footer {
+      position:fixed;
+      left: 0;
+      bottom: 0;
+      width: 80%;
+      background:rgb(49, 5, 54);
+      color: white;
+      text-align: center;
+      height:20px;
+      font-family:Times New Roman;
+      
+   }
+   .card-img-top{
+      height:80%;
+      width:90%;
+      padding:20px;
+   }
+   
+</style>
+<div class="container">
+<div class="  row mt-2">
+   <div class="box col-6  ">
+      <img src="{{ cover.image.url}}" class="card-img-top" alt="Image not available" width="50px" height="50%">
+   </div> 
+   <div class="col-6">
+      <div class="card" style="width: 100%;">
+         <div class="card-body">
+           <h4 class="card-title">{{cover.name}}</h4>       
+           <em><p class="card-text">{{cover.description}}</p></em>
+           <strong>Rs. {{cover.price}}</strong><br>
+           <a href="/addtocart/{{cover.id}}" class="btn">Add To cart</a>
+           <a href="/" class="btn">Back</a>
+         </div>
+       </div>
+   </div>
+</div>
+</div>
+{% endblock 'main' %}

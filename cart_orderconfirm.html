@@ -1,0 +1,21 @@
+{% extends 'login1.html' %}
+
+{% block 'main' %}
+
+<style>
+    .footer{
+        position: fixed;
+    }
+    .btn{
+        background-color: plum;
+        color:black;
+    }
+</style>    
+<div class="mt-5">
+<h4><em>Congratulations....</h4>
+<h5>Your Order has been Placed Successfully!</em></h5><br>
+<a href="/" class="btn">Home</a>
+<a href="/orders" class="btn">View Order</a>
+</div>
+
+{% endblock 'main'%}

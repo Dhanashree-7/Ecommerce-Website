@@ -1,0 +1,52 @@
+{% load static %}
+<style>
+  .box{
+    background: white;
+    color: black;
+  }
+
+  .bg-light{
+    background:grey;
+    color:black;
+    position:sticky;
+    
+  }
+
+  
+  .btn{
+  background-color:plum;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+
+  }
+
+  .sidebar {
+    flex: 1;
+    background-color: #f1f1f1;
+    padding: 20px;
+    height: 1000px;
+    position: sticky;
+    top: 0; /* This will freeze the sidebar at the top as you scroll */
+}
+
+
+
+</style>
+<div class="sidebar"><br><br>       
+    
+    <h4 class="mt-2">Filter By Price</h4>
+    <hr>
+    <form action="/range">
+          <h5><label class="col-form-label">Min:</label></h5>            
+          <input type="text"  class="form-control" name="min"><br>            
+          <h5><label class="col-form-label">Max:</label></h5>                
+          <input type="text"  name="max" class="form-control"><br>             
+          <input class="mt-4 btn " type="submit" value="Search">
+    </form>
+    <br><br>
+    <h4 class="mt-2"> Sort By Price </h4>
+    <hr>
+    <h6><a href="/sort/asc">Low to High</a></h6><br>
+    <h6><a href="/sort/desc">High to Low</a></h6><br><br><br>      
+</div> 

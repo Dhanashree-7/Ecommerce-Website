@@ -1,0 +1,65 @@
+{% extends 'login1.html' %}
+{% load static %}
+
+{% block 'main' %}
+<style>
+  .btn{
+    background-color:plum;
+    color: black;
+ }
+
+  .container{
+    height:auto;
+    padding:auto;
+    background-color: #f0f0f0;
+   
+    color:black;
+  }
+
+  .col{
+    padding: 20px;
+
+  }
+
+  .box col-6{
+    padding: 10px;
+
+  }
+  .footer{
+    position: fixed;
+  }
+  
+</style>
+<div class="container mt-2">
+  <h2>Search Results for "{{ query }}"</h2>
+  {% if results %}
+    <ul class="list-group">
+      {% for cover in results %}
+      <div class="container">
+        <div class=" row mt-2">
+           <div class="box col-6 ">
+              <img src="{{ cover.image.url}}" class="card-img-top" alt="Image not available" width="20px" height="80%">
+           </div> 
+           <div class="col-6">
+              <div class="card" style="width: 100%;">
+                 <div class="card-body">
+                   <h4 class="card-title">{{cover.name}}</h4>       
+                   <p class="card-text">{{cover.description}}</p>
+                   <strong>Rs. {{cover.price}}</strong><br>
+                   <a href="/addtocart/{{cover.id}}" class="btn ">Add To cart</a>
+                   <a href="/" class="btn ">Back</a>
+                 </div>
+              </div>
+           </div>
+        </div>
+      </div>
+
+        
+        <!-- You can add more cover details here -->
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No results found for "{{ query }}".</p>
+  {% endif %}
+</div>
+{% endblock 'main' %}

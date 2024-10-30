@@ -1,0 +1,119 @@
+{% extends 'login1.html' %}
+
+{% block 'main' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - COVERHUB</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+        .orders-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        .order-header {
+            border-bottom: 3px solid #e2e2e2;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+        }
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e2e2;
+        }
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        .order-item .order-details {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .order-item h5 {
+            margin-bottom: 5px;
+        }
+        .order-item span {
+            font-weight: bold;
+            color: #333;
+        }
+        .order-summary {
+            border-top: 2px solid #e2e2e2;
+            padding-top: 10px;
+            margin-top: 30px;
+            text-align: right;
+        }
+        .total-price {
+            font-weight: bold;
+            font-size: 1.4em;
+            color: #28a745;
+        }
+        .order-date {
+            font-size: 0.9em;
+            color: #888;
+        }
+        .no-orders {
+            text-align: center;
+            color: #777;
+            margin-top: 50px;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+        .footer{
+            position:fixed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container orders-container">
+    <h2 class="text-center order-header">My Orders</h2>
+
+    <!-- Display orders dynamically -->
+    {% if orders %}
+        {% for order in orders %}
+        <div class="order-item">
+            <div class="order-details">
+                <h5>Order Id: #{{ order.order_id }}</h5>
+                <h5>Cover Name: {{ order.cover.name }}</h5>
+                <h6><p>Price: Rs.{{order.cover.price}}</p></h6>
+                <img src="{{order.cover.image.url}}" width="68px"><br><br>
+                <h6><p>Address Details: {{ order.address.name }}<br>
+                    {{ order.address.flat }},
+                    {{ order.address.landmark }},
+                    {{ order.address.city }},
+                    {{ order.address.state }},
+                    {{ order.address.pincode }},
+                    {{ order.address.contact }}.
+                </p></h6>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-orders">You have no orders yet.</p>
+    {% endif %}
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock 'main'%}

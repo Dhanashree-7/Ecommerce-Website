@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+
+  .header {
+    padding:auto;
+    position:sticky;
+    top: 0;
+    left: 0;
+    {% comment %} width: 100%; {% endcomment %}
+    z-index: 1000; /* Ensures the header stays on top of other elements */
+    
+}
+ 
+
+
+  
+</style>
+<body>
+  <div class="header">
+    <nav style="background-color: black;" class="navbar navbar-expand-md navbar-dark ">
+      <a href="/aboutus"  style="color:white"  text-decoration="underline" class="fas fa-mobile">        
+        <em><strong> COVERHUB </strong></em>
+      
+      </a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="/"><i class="fas fa-home"></i>&nbsp; Home</i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="/orders"><i class="fas fa-star"></i>&nbsp; Orders</i></a>
+                </li>
+      
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="{% url 'logout' %}"><i class="fas fa-key"></i>&nbsp; Logout</i></a>
+              </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="/registration"><i class="fas fa-user-shield"></i>&nbsp; Register</i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" style="color: white;" href="/login"><i class="fas fa-lock"></i>&nbsp; Login</i></a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="/showcart"><i class="fas fa-shopping-cart"></i>&nbsp; Cart</i></a>
+                </li>
+                <form class="form-inline my-4 my-lg-0" action="{% url 'search' %}" method="GET">
+                  <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search" required>
+                  <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </form>                                
+              </div>
+            </div>
+    </nav>
+            </ul>
+  </div>
+</body>
+</html>
+

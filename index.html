@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block 'main' %}
+<style>
+    .btn{
+        background-color:plum;
+        color: black;
+        shadow-color: white 1cm;
+        padding: 10px;
+        border-radius: 10px;
+        transition:hover;
+       }
+
+       .card img {
+        width: 100%;
+        height: 250px; /* Set a fixed height */
+        object-fit: cover; /* Ensures the image doesn't get distorted */
+      }
+      
+       .card h5 {
+        box-shadow:grey;
+        font-size: 18px;
+        text-align: left;
+        margin-top: 10px;
+      }
+      
+      .card .price {
+        font-size: 16px;
+        font-weight: bold;
+        text-align: left;
+        margin-bottom: 10px;
+      }
+      
+      .card .btn {
+        background-color: #d6a5e1; /* Add your button color */
+        border: none;
+        padding: 10px;
+        width: 100%;
+        margin-top: 10px;
+      }
+      
+      .card .btn:hover {
+        background-color: #c58ed7; /* Hover effect */
+      }
+    
+      
+    
+</style>
+<div class="row">
+    <!-- product 1 -->
+    {% for cover in covers %}
+    <div class="card col-m-4 md-4 m-4"  height="100%" style="width:11em;">
+        <img src="{{cover.image.url}}" class="card-img-top"  alt="Image not available">
+        <div class="card-body">
+            <h5 class="card-title">{{cover.name}}</h5>
+            {% comment %} <em><p class="card-text">{{cover.description}}
+            </p></em>  {% endcomment %}
+            <strong>Rs.{{cover.price}}</strong>
+            <br><br>
+            <a href="/details/{{ cover.id}}" class="btn ">View Details</a><br><br>
+            <a href="/addtocart/{{ cover.id}}" class="btn ">Add to Cart</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock 'main'%}

@@ -1,0 +1,61 @@
+{% extends 'login1.html' %}
+{% load static %}
+
+{% block 'main' %}
+<style>
+    .container{
+        width: 50%;
+        padding: 20px;
+        
+        color:black;
+      }
+    .btn{
+        background-color:plum;
+        color: black;
+        shadow-color: white 1cm;
+        padding: 10px;
+        border-radius: 10px;
+     
+       }
+
+    .footer{
+        position: fixed;
+    }
+</style>
+<div class="container">
+<h4>Kindly click on Razorpay to proceed your payment safely.</h4>
+<button id="rzp-button1" class="btn  m-4">Pay with Razorpay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    var options = {
+        "key": "rzp_test_93atKPgF1eLJ4M", // Enter the Key ID generated from the Dashboard
+        "amount": "{{amt}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "COVERHUB",
+        "description": "Test Transaction",
+        "image": "{% static 'images/pay_logo.png' %}",
+        "order_id": "{{data}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url": "http://127.0.0.1:8000/cartorderconfirm/{{aid}}",
+        "prefill": {
+            "name": "Gaurav Kumar",
+            "email": "gaurav.kumar@example.com",
+            "contact": "9000090000"
+        },
+        "notes": {
+            "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+            "color": "#FF004D"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    document.getElementById('rzp-button1').onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+    }
+</script>
+</div>
+
+
+
+{% endblock 'main' %}

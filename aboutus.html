@@ -1,0 +1,54 @@
+{% extends 'login1.html' %}
+{% load static %}
+
+
+{% block 'main' %}
+
+
+<div class="card col-md-10 m-4"  height="100%" style="width: 100%">
+<style>
+    .header {
+        padding:auto;
+        position:sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Ensures the header stays on top of other elements */
+        
+    }
+     
+    .footer{
+        position:fixed;
+        font:Times New Roman;
+    }
+
+    .body{
+        background color:plum;
+    }
+   
+    .div class{
+        background-color: plum;
+
+    }
+</style>
+
+<body style="background-image: url('{% static "images" %}'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+    <h3><p><br>Hello and welcome to our COVERHUB page.</p></h3>
+    <h5><p>Welcome to COVERHUB, your ultimate destination for stylish and protective phone covers.
+        We are passionate about delivering top-quality, trendy phone cases that reflect your personal 
+        style while offering the best protection for your devices.
+        Our wide range of designs ensures there’s something for everyone, 
+        from sleek minimalists to bold trendsetters. 
+        At COVERHUB, customer satisfaction is our highest priority, and
+        we strive to offer fast delivery, secure payments, and a seamless shopping experience. 
+        Join us in exploring the perfect blend of fashion and functionality with covers
+        designed to protect and elevate your phone.
+
+
+        </p></h5><em>
+    <h4><p>Thank You! For Choosing Us.<p></h4><br>
+    
+</body>
+</html>
+</div>
+{% endblock 'main' %}

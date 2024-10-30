@@ -1,0 +1,13 @@
+{% include 'header.html' %}
+
+<!-- row2 -->
+<div class="myrow2 row">
+    <!--row2 col1 -->
+    {% include 'sidebar.html' %} 
+    <!-- row2 col2 -->
+    <div class="box col-10">
+        {% block 'main' %}
+        {% endblock 'main' %}
+    </div>
+</div>
+{% include 'footer.html' %}

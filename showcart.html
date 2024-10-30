@@ -1,0 +1,69 @@
+{% extends 'login1.html' %}
+{% load static %}
+
+{% block 'main' %}
+<style>
+   body {
+      background-color: #f4f4f4; /* Light grey background for the whole page */
+   }
+
+   .btn {
+      background-color:plum; /* Slightly darker plum on hover */
+   }
+
+   .box {
+      background-color: #f4f4f4;
+      padding:20px;
+
+   }
+   .footer{
+      position: fixed;
+   }
+</style>
+<div class="container">
+<div class="row">
+   <div class="col-md-12">
+   {% for message in messages %}
+         {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS  %}
+            <div class="alert alert-success">
+               {{ message }}
+            </div>
+         {% endif %}
+   {% endfor %} 
+   </div>
+   <div class="box col-6">
+      <h3>Products</h3>
+      {% for cover in cart %}
+      <div class="row m-2" >
+         <div class=" box col-6 p-2">
+            <img src="{{ cover.cid.image.url}}" class="card-img-top" alt="Image not available" width="150px" height="100%">
+         </div>
+         <div class="col-6">
+            <h3>{{ cover.cid.name }}</h3>
+            <h3>Rs.{{ cover.cid.price }}</h3><br>
+            Quantity:
+            {% if cover.quantity > 1 %}
+            <a class="btn" href="/updatecart/0/{{cover.id}}">-</a>
+            {% endif %}
+            <strong> {{cover.quantity}}</strong>
+            <a class="btn" href="/updatecart/1/{{cover.id}}">+</a>
+            <br><br>
+            <a href="/removecart/{{cover.id}}" class="btn">Remove</a>
+         </div><br>
+         
+      </div>
+      {% endfor %}
+   </div>
+   <div class="box col-6">
+         <h3>Summary</h3>
+         <h4>Items Count: {{count}}</h4>
+         <h4>Total Amount: Rs. {{total}}</h4>
+         <br>
+         <a class="btn" href="/address">Buy Now</a><br><br>
+         <a class="btn" href="/">Shop More</a>
+      </h3>
+   </div>
+</div>
+</div> 
+
+{% endblock 'main' %}
